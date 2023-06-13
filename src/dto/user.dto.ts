@@ -4,7 +4,6 @@ import { IsEmail, IsNotEmpty, IsString } from "class-validator";
 
 export class CreateUserDTO {
 
-
   @IsString({message: "Please enter a valid string"})
   @IsNotEmpty({message: "first_name cannot be blank"})
   first_name: string;

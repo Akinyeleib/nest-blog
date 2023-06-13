@@ -14,6 +14,10 @@ export class UserService {
     private userRepository: Repository<User>,
   ) {}
 
+  getUsers() {
+    return this.userRepository.find();
+  }
+
   async createUser(user: CreateUserDTO) {
 
     const password = await bcrypt.hash(user.password1, 10)

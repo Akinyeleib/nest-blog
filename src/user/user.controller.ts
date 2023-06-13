@@ -1,7 +1,8 @@
 /* eslint-disable prettier/prettier */
-import { BadRequestException, Body, Controller, Post } from '@nestjs/common';
+import { BadRequestException, Body, Controller, Get, Post } from '@nestjs/common';
 import { CreateUserDTO } from 'src/dto/user.dto';
 import { UserService } from './user.service';
+import { User } from 'src/entity/user.entity';
 
 @Controller('user')
 export class UserController {
@@ -17,6 +18,11 @@ export class UserController {
     
     return this.userService.createUser(createUserDTO);
   
+  }
+
+  @Get()
+  getUsers(): Promise<User[]> {
+    return this.userService.getUsers();
   }
 
 }

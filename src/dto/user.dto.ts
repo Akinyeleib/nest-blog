@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
 
 import { IsEmail, IsNotEmpty, IsString } from "class-validator";
+import { IsStringNotEmpty } from "src/utils/helper";
 
 export class CreateUserDTO {
 
@@ -17,24 +18,19 @@ export class CreateUserDTO {
   username: string;
 
   @IsEmail()
-  @IsString()
-  @IsNotEmpty()
+  @IsStringNotEmpty()
   email: string;
 
-  @IsString()
-  @IsNotEmpty()
+  @IsStringNotEmpty()
   password1: string;
 
-  @IsString()
-  @IsNotEmpty()
+  @IsStringNotEmpty()
   password2: string;
 
-  @IsString()
-  @IsNotEmpty()
+  @IsStringNotEmpty()
   security_question: string;
 
-  @IsString()
-  @IsNotEmpty()
+  @IsStringNotEmpty()
   security_answer: string;
 
 }

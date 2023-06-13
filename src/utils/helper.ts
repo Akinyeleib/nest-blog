@@ -1,0 +1,10 @@
+/* eslint-disable prettier/prettier */
+import { applyDecorators } from '@nestjs/common';
+import { IsEmail, IsNotEmpty, IsString } from "class-validator";
+
+export function IsStringNotEmpty() {
+  return applyDecorators(
+    IsString,
+    IsNotEmpty
+  );
+}

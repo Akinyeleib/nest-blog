@@ -1,20 +1,17 @@
 /* eslint-disable prettier/prettier */
 
-import { IsEmail, IsNotEmpty, IsString } from "class-validator";
+import { IsEmail } from "class-validator";
 import { IsStringNotEmpty } from "src/utils/helper";
 
 export class CreateUserDTO {
 
-  @IsString({message: "Please enter a valid string"})
-  @IsNotEmpty({message: "first_name cannot be blank"})
+  @IsStringNotEmpty()
   first_name: string;
 
-  @IsString()
-  @IsNotEmpty({message: "last_name cannot be blank"})
+  @IsStringNotEmpty()
   last_name: string;
 
-  @IsString()
-  @IsNotEmpty({message: "username cannot be blank"})
+  @IsStringNotEmpty()
   username: string;
 
   @IsEmail()

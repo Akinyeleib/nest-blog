@@ -21,8 +21,9 @@ export class UserController {
   }
 
   @Get('/:id')
-  getUser(@Param('id') id: number): Promise<User> {
-    const user = this.userService.getUser(id);
+  async getUser(@Param('id') id: number): Promise<User> {
+    const user = await this.userService.getUser(id);
+    console.log(user)
     if (user) return user;
     throw new NotFoundException(`User with ${id} not found!`);
   }

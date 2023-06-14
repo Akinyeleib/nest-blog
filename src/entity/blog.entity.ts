@@ -1,14 +1,19 @@
 /* eslint-disable prettier/prettier */
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { User } from './user.entity';
 
 @Entity()
 export class Blog {
+
   @Column()
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
   author_id: number;
+
+  // @Column()
+  // author: User;
 
   @Column()
   content: string;
@@ -18,4 +23,5 @@ export class Blog {
 
   @Column()
   updated_at: string;
+
 }

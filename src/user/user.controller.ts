@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { BadRequestException, Body, Controller, Get, NotFoundException, Param, Post } from '@nestjs/common';
+import { BadRequestException, Body, Controller, Delete, Get, NotFoundException, Param, Post } from '@nestjs/common';
 import { CreateUserDTO } from 'src/dto/user.dto';
 import { UserService } from './user.service';
 import { User } from 'src/entity/user.entity';
@@ -36,6 +36,11 @@ export class UserController {
   @Get()
   getUsers(): Promise<User[]> {
     return this.userService.getUsers();
+  }
+
+  @Delete('/:id')
+  deleteUser(@Param('id') id: number) {
+    return this.userService.deleteUser(id);
   }
 
 }

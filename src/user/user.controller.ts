@@ -14,7 +14,7 @@ export class UserController {
 
     // passsword confirmation
     if (createUserDTO.password1 !== createUserDTO.password2) {
-      throw new BadRequestException("Password mismatch");
+      throw new BadRequestException('Password mismatch');
     }
 
     // unique email check

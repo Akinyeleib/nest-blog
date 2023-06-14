@@ -18,8 +18,12 @@ export class UserService {
     return this.userRepository.find();
   }
 
-  getUser(id: number) {
+  getUserByID(id: number) {
     return this.userRepository.findOne({where: {id}});
+  }
+
+  getUserByEmail(email: string) {
+    return this.userRepository.findOne({where: {email}});
   }
 
   async createUser(user: CreateUserDTO) {

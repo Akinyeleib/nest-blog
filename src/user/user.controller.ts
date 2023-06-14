@@ -10,11 +10,16 @@ export class UserController {
   constructor(private userService: UserService) {}
 
   @Post()
-  createUser(@Body() createUserDTO: CreateUserDTO) {
+  async createUser(@Body() createUserDTO: CreateUserDTO) {
 
+    // passsword confirmation
     if (createUserDTO.password1 !== createUserDTO.password2) {
       throw new BadRequestException("Password mismatch");
     }
+
+    // unique email check
+    const user = await this.userService.getUserByEmail(createUserDTO.email);
+    if (user) throw new BadRequestException(`Email not available`);
     
     return this.userService.createUser(createUserDTO);
   
@@ -22,7 +27,7 @@ export class UserController {
 
   @Get('/:id')
   async getUser(@Param('id') id: number): Promise<User> {
-    const user = await this.userService.getUser(id);
+    const user = await this.userService.getUserByID(id);
     console.log(user)
     if (user) return user;
     throw new NotFoundException(`User with ${id} not found!`);

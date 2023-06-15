@@ -3,10 +3,11 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { BlogModule } from './blog/blog.module';
-import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './entity/user.entity';
+import { Blog } from './entity/blog.entity';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -21,10 +22,10 @@ import { User } from './entity/user.entity';
         username: 'root',
         password: 'root',
         database: 'nestblog',
-        entities: [User],
+        entities: [User, Blog],
         synchronize: true,
       }
-    )
+    ),
   ],
   controllers: [AppController],
   providers: [AppService],

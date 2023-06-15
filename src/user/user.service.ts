@@ -26,6 +26,10 @@ export class UserService {
     return this.userRepository.findOne({where: {email}});
   }
 
+  getUserByUsername(username: string) {
+    return this.userRepository.findOne({where: {username}});
+  }
+
   async createUser(user: CreateUserDTO) {
 
     const password = await bcrypt.hash(user.password1, 10)

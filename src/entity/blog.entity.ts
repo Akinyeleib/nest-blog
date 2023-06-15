@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { User } from './user.entity';
 
 @Entity()
@@ -10,10 +10,7 @@ export class Blog {
   id: number;
 
   @Column()
-  author_id: number;
-
-  // @Column()
-  // author: User;
+  title: string;
 
   @Column()
   content: string;
@@ -23,5 +20,8 @@ export class Blog {
 
   @Column()
   updated_at: string;
+
+  @ManyToOne(() => User, user => user.blogs)
+  user: User;
 
 }

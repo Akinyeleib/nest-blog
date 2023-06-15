@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Blog } from './blog.entity';
 
 @Entity()
 export class User {
@@ -28,5 +29,8 @@ export class User {
 
   @Column()
   security_answer: string;
+
+  @OneToMany(() => Blog, blog => blog.user)
+  blogs: Blog[];
 
 }

@@ -1,4 +1,5 @@
 import {
+  Body,
   Controller,
   Delete,
   Get,
@@ -8,6 +9,7 @@ import {
   Post,
 } from '@nestjs/common';
 import { BlogService } from './blog.service';
+import { CreateBlogDTO } from 'src/dto/blog.dto';
 
 @Controller('blog')
 export class BlogController {
@@ -21,8 +23,8 @@ export class BlogController {
     return this.blogService.getBlog(id);
   }
   @Post()
-  addBlog(): string {
-    return this.blogService.createBlog();
+  addBlog(@Body() createBlogDTO: CreateBlogDTO) {
+    return this.blogService.createBlog(createBlogDTO);
   }
   @Delete('/:id')
   deleteBlog(@Param('id', ParseIntPipe) id: number): string {

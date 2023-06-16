@@ -1,4 +1,5 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
+import { CreateBlogDTO } from 'src/dto/blog.dto';
 
 @Injectable()
 export class BlogService {
@@ -15,7 +16,7 @@ export class BlogService {
   updateBlog(id: number): string {
     return 'Updating One Blog with id: ' + id;
   }
-  createBlog(): string {
-    return 'One Blog Created...';
+  createBlog(createBlogDTO: CreateBlogDTO): string {
+    return createBlogDTO;
   }
 }

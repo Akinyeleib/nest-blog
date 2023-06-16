@@ -30,7 +30,7 @@ export class User {
   @Column()
   security_answer: string;
 
-  @OneToMany(() => Blog, blog => blog.user)
+  @OneToMany(() => Blog, blog => blog.user, {cascade: true})
   blogs: Blog[];
 
 }

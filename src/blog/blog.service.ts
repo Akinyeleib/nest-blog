@@ -1,8 +1,13 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { CreateBlogDTO } from 'src/dto/blog.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Blog } from 'src/entity/blog.entity';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class BlogService {
+  constructor(
+    @InjectRepository(Blog) private blogRepository: Repository<Blog>,
+  ) {}
   getBlogs(): string {
     return 'All Blogs';
   }
@@ -16,7 +21,7 @@ export class BlogService {
   updateBlog(id: number): string {
     return 'Updating One Blog with id: ' + id;
   }
-  createBlog(createBlogDTO: CreateBlogDTO) {
-    return createBlogDTO;
+  createBlog(blog: Blog) {
+    return this.blogRepository.save(blog);
   }
 }

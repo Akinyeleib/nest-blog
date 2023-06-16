@@ -15,10 +15,10 @@ export class Blog {
   @Column()
   content: string;
 
-  @Column()
+  @Column({nullable: true})
   posted_at: string;
 
-  @Column()
+  @Column({nullable: true})
   updated_at: string;
 
   @ManyToOne(() => User, user => user.blogs)

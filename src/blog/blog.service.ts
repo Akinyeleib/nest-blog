@@ -16,7 +16,7 @@ export class BlogService {
   updateBlog(id: number): string {
     return 'Updating One Blog with id: ' + id;
   }
-  createBlog(createBlogDTO: CreateBlogDTO): string {
+  createBlog(createBlogDTO: CreateBlogDTO) {
     return createBlogDTO;
   }
 }

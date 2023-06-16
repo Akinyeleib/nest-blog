@@ -15,8 +15,8 @@ export class BlogService {
     if (id % 2 === 0) return `One Blog with ${id} retrieved`;
     throw new NotFoundException();
   }
-  deleteBlog(id: number): string {
-    return 'Delete One Blog with id: ' + id;
+  deleteBlog(id: number) {
+    return this.blogRepository.delete(id);
   }
   updateBlog(id: number): string {
     return 'Updating One Blog with id: ' + id;

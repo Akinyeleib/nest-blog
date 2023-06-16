@@ -45,7 +45,7 @@ export class BlogController {
     return this.blogService.createBlog(blog);
   }
   @Delete('/:id')
-  deleteBlog(@Param('id', ParseIntPipe) id: number): string {
+  deleteBlog(@Param('id', ParseIntPipe) id: number) {
     return this.blogService.deleteBlog(id);
   }
   @Patch('/:id')

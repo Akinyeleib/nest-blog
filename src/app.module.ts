@@ -9,6 +9,7 @@ import { User } from './entity/user.entity';
 import { Blog } from './entity/blog.entity';
 import { AuthModule } from './auth/auth.module';
 import { CommentModule } from './comment/comment.module';
+import { Comments } from './entity/comment.entity';
 
 @Module({
   imports: [
@@ -23,7 +24,7 @@ import { CommentModule } from './comment/comment.module';
         username: 'root',
         password: 'root',
         database: 'nestblog',
-        entities: [User, Blog],
+        entities: [User, Blog, Comments],
         synchronize: true,
       }
     ),

@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Blog } from './blog.entity';
+import { Comments } from './comment.entity';
 
 @Entity()
 export class User {
@@ -32,5 +33,8 @@ export class User {
 
   @OneToMany(() => Blog, blog => blog.user, {cascade: true})
   blogs: Blog[];
+
+  @OneToMany(() => Comments, comment => comment.user, {cascade: true})
+  comments: Comments[];
 
 }

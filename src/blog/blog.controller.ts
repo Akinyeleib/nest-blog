@@ -21,7 +21,7 @@ export class BlogController {
     private userService: UserService,
   ) {}
   @Get()
-  getBlogs(): string {
+  getBlogs(): Promise<Blog[]> {
     return this.blogService.getBlogs();
   }
   @Get('/:id')

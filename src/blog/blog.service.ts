@@ -8,8 +8,8 @@ export class BlogService {
   constructor(
     @InjectRepository(Blog) private blogRepository: Repository<Blog>,
   ) {}
-  getBlogs(): string {
-    return 'All Blogs';
+  getBlogs(): Promise<Blog[]> {
+    return this.blogRepository.find();
   }
   async getBlog(id: number): Promise<Blog> {
     const user = await this.blogRepository.findOne({ where: { id } });

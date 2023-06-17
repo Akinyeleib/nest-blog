@@ -9,5 +9,6 @@ import { UserModule } from 'src/user/user.module';
   controllers: [BlogController],
   providers: [BlogService],
   imports: [TypeOrmModule.forFeature([Blog]), UserModule],
+  exports: [BlogService],
 })
 export class BlogModule {}

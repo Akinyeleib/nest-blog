@@ -11,9 +11,10 @@ export class BlogService {
   getBlogs(): string {
     return 'All Blogs';
   }
-  getBlog(id: number): string {
-    if (id % 2 === 0) return `One Blog with ${id} retrieved`;
-    throw new NotFoundException();
+  async getBlog(id: number): Promise<Blog> {
+    const user = await this.blogRepository.findOne({ where: { id } });
+    if (!user) throw new NotFoundException();
+    return user;
   }
   deleteBlog(id: number) {
     return this.blogRepository.delete(id);
@@ -21,7 +22,7 @@ export class BlogService {
   updateBlog(id: number): string {
     return 'Updating One Blog with id: ' + id;
   }
-  createBlog(blog: Blog) {
+  createBlog(blog: Blog): Promise<Blog> {
     return this.blogRepository.save(blog);
   }
 }

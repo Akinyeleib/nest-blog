@@ -25,11 +25,11 @@ export class BlogController {
     return this.blogService.getBlogs();
   }
   @Get('/:id')
-  getBlog(@Param('id', ParseIntPipe) id: number): string {
+  getBlog(@Param('id', ParseIntPipe) id: number): Promise<Blog> {
     return this.blogService.getBlog(id);
   }
   @Post()
-  async addBlog(@Body() createBlogDTO: CreateBlogDTO) {
+  async addBlog(@Body() createBlogDTO: CreateBlogDTO): Promise<Blog> {
     // check if user exists
     const user = await this.userService.getUserByID(createBlogDTO.author_id);
     // throw error if user does not exist

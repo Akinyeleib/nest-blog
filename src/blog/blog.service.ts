@@ -13,7 +13,7 @@ export class BlogService {
   }
   async getBlog(id: number): Promise<Blog> {
     const user = await this.blogRepository.findOne({ where: { id } });
-    if (!user) throw new NotFoundException();
+    if (!user) throw new NotFoundException('Invlaid Blog Specified');
     return user;
   }
   deleteBlog(id: number) {

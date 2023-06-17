@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { User } from './user.entity';
+import { Comments } from './comment.entity';
 
 @Entity()
 export class Blog {
@@ -23,5 +24,8 @@ export class Blog {
 
   @ManyToOne(() => User, user => user.blogs)
   user: User;
+
+  @OneToMany(() => Comments, comment => comment.blog)
+  comments: Comments;
 
 }

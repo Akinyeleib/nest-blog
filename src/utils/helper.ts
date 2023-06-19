@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { applyDecorators } from '@nestjs/common';
 import { IsNotEmpty, IsString } from "class-validator";
 import * as jwt from "jsonwebtoken"

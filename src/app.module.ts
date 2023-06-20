@@ -10,19 +10,8 @@ import { Blog } from './entity/blog.entity';
 import { AuthModule } from './auth/auth.module';
 import { CommentModule } from './comment/comment.module';
 import { Comments } from './entity/comment.entity';
+import { typeOrmConfig } from './config/typeorm.config';
 
-
-
-const typeOrmConfig: TypeOrmModuleOptions = {  
-  type: 'mysql',
-  host: 'localhost',
-  port: 3306,
-  username: 'root',
-  password: 'root',
-  database: 'nestblog',
-  entities: [User, Blog, Comments],
-  synchronize: true,
-}
 
 @Module({
   imports: [

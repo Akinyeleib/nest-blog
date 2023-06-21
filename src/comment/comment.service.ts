@@ -1,6 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { CreateCommentDTO } from 'src/dto/comments.dto';
 import { Comments } from 'src/entity/comment.entity';
+import { User } from 'src/entity/user.entity';
 import { Repository } from 'typeorm';
 
 @Injectable()
@@ -14,8 +16,9 @@ export class CommentService {
   async getComments(): Promise<Comments[]> {
     return this.commentRepository.find({ relations: ['user', 'blog'] });
   }
-  async createComment(body: any): Promise<Comments> {
+  async createComment(body: CreateCommentDTO, user: User): Promise<Comments| any> {
 
     return body;
   }
+  
 }

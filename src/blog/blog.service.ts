@@ -1,6 +1,8 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { CreateBlogDTO } from 'src/dto/blog.dto';
 import { Blog } from 'src/entity/blog.entity';
+import { User } from 'src/entity/user.entity';
 import { Repository } from 'typeorm';
 
 @Injectable()
@@ -22,7 +24,14 @@ export class BlogService {
   updateBlog(id: number): string {
     return 'Updating One Blog with id: ' + id;
   }
-  createBlog(blog: Blog): Promise<Blog> {
+  createBlog(createBlogDTO: CreateBlogDTO, user: User): Promise<Blog> {
+    // De-Structuring
+    const { title, content } = createBlogDTO;
+    // object of Blog
+    const blog = new Blog();
+    blog.title = title;
+    blog.content = content;
+    blog.user = user;
     return this.blogRepository.save(blog);
   }
 }

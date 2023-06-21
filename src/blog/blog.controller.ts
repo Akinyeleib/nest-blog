@@ -34,15 +34,7 @@ export class BlogController {
     const user = await this.userService.getUserByID(createBlogDTO.author_id);
     // throw error if user does not exist
     if (!user) throw new ForbiddenException('Invalid Author');
-    // De-Structuring
-    const { title, content } = createBlogDTO;
-    // object of Blog
-    const blog = new Blog();
-    blog.title = title;
-    blog.content = content;
-    blog.user = user;
-
-    return this.blogService.createBlog(blog);
+    return this.blogService.createBlog(createBlogDTO, user);
   }
   @Delete('/:id')
   deleteBlog(@Param('id', ParseIntPipe) id: number) {

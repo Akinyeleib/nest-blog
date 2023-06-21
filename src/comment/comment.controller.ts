@@ -26,6 +26,12 @@ export class CommentController {
     // throw error if user does not exist
     if (!user) throw new ForbiddenException('Invalid Author');
 
+    // check if blog exists
+    const blog = await this.blogService.getBlog(createCommentDTO.blog);
+    // throw error if blog does not exist
+    if (!blog) throw new ForbiddenException('Invalid Blog');
     return this.commentService.createComment(createCommentDTO, user);
+
   }
+
 }

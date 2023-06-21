@@ -9,9 +9,13 @@ export class CommentService {
     @InjectRepository(Comments) private commentRepository: Repository<Comments>,
   ) {}
   async getComment(id: number): Promise<Comments> {
-    return this.commentRepository.findOne({ where: { id } });
+    return this.commentRepository.findOne({ where: { id }, relations: ['user', 'blog'] });
   }
   async getComments(): Promise<Comments[]> {
-    return this.commentRepository.find();
+    return this.commentRepository.find({ relations: ['user', 'blog'] });
+  }
+  async createComment(body: any): Promise<Comments> {
+
+    return body;
   }
 }

@@ -28,8 +28,8 @@ export class CommentService {
     blogComments.comment = content;
     blogComments.user = user;
     
-    return this.commentRepository.create(blogComments);
-    
+    return this.commentRepository.save(blogComments);
+
   }
   
 }

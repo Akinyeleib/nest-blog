@@ -11,10 +11,10 @@ export class BlogService {
     @InjectRepository(Blog) private blogRepository: Repository<Blog>,
   ) {}
   getBlogs(): Promise<Blog[]> {
-    return this.blogRepository.find();
+    return this.blogRepository.find({relations: ['user']});
   }
   async getBlog(id: number): Promise<Blog> {
-    const user = await this.blogRepository.findOne({ where: { id } });
+    const user = await this.blogRepository.findOne({ where: { id }, relations: ['user'] });
     if (!user) throw new NotFoundException('Invlaid Blog Specified');
     return user;
   }

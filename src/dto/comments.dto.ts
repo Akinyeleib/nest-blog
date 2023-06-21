@@ -1,6 +1,4 @@
-/* eslint-disable prettier/prettier */
-
-import { IsNotEmpty, IsPositive } from "class-validator"
+import { IsPositive } from "class-validator"
 import { IsStringNotEmpty } from "src/utils/helper"
 
 export class CreateCommentDTO {

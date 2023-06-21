@@ -3,7 +3,7 @@ import { Comments } from 'src/entity/comment.entity';
 import { CommentService } from './comment.service';
 import { CreateCommentDTO } from 'src/dto/comments.dto';
 
-@Controller('comments')
+@Controller('blogs/:id/comments')
 export class CommentController {
   constructor(public commentService: CommentService) {}
   @Get('/:id')

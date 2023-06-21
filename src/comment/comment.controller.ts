@@ -30,7 +30,7 @@ export class CommentController {
     const blog = await this.blogService.getBlog(createCommentDTO.blog);
     // throw error if blog does not exist
     if (!blog) throw new ForbiddenException('Invalid Blog');
-    return this.commentService.createComment(createCommentDTO, user);
+    return this.commentService.createComment(createCommentDTO, user, blog);
 
   }
 

@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 import { User } from './user.entity';
 import { Comments } from './comment.entity';
 
@@ -16,10 +16,10 @@ export class Blog {
   @Column()
   content: string;
 
-  @Column({nullable: true})
+  @CreateDateColumn({nullable: true})
   posted_at: string;
 
-  @Column({nullable: true})
+  @UpdateDateColumn({nullable: true})
   updated_at: string;
 
   @ManyToOne(() => User, user => user.blogs)

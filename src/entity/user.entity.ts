@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Blog } from './blog.entity';
 import { Comments } from './comment.entity';

@@ -1,7 +1,6 @@
-import { BeforeInsert, Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Blog } from './blog.entity';
 import { Comments } from './comment.entity';
-import * as bcrypt from 'bcryptjs';
 
 @Entity()
 export class User {
@@ -36,10 +35,5 @@ export class User {
 
   @OneToMany(() => Comments, comment => comment.user, {cascade: true})
   comments: Comments[];
-  
-  @BeforeInsert()
-  async setPassword(password: string) {
-    this.password = await bcrypt.hash(password || this.password, 10);
-  }
 
 }

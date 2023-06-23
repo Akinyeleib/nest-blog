@@ -32,7 +32,7 @@ export class UserService {
 
   async createUser(user: CreateUserDTO) {
 
-    const password = await bcrypt.hash(user.password1, 10)
+    // const password = await bcrypt.hash(user.password1, 10)
 
     const {first_name, last_name, email, username, security_question, security_answer} = user;
 
@@ -41,13 +41,13 @@ export class UserService {
       last_name,
       email,
       username,
-      password,
+      password: user.password1,
       security_question,
       security_answer
     };
 
     // return newUser;
-    return this.userRepository.save(newUser);
+    return await this.userRepository.save(newUser);
 
   }
 

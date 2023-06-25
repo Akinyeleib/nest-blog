@@ -7,18 +7,23 @@ import { BlogService } from 'src/blog/blog.service';
 
 @Controller('blogs/:id/comments')
 export class CommentController {
+
   constructor(
     private commentService: CommentService, 
     private userService: UserService, 
     private blogService:BlogService) {}
-  @Get('/:id')
+
+    @Get('/:id')
+
   getComment(@Param('id', ParseIntPipe) id: number): Promise<Comments> {
     return this.commentService.getComment(id);
   }
+
   @Get()
   getComments(): Promise<Comments[]> {
     return this.commentService.getComments();
   }
+
   @Post()
   async createComment(@Body() createCommentDTO: CreateCommentDTO): Promise<Comments> {
     // check if user exists

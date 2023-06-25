@@ -1,4 +1,4 @@
-/* eslint-disable prettier/prettier */
+
 
 import { IsEmail } from "class-validator";
 import { IsStringNotEmpty } from "src/utils/helper";

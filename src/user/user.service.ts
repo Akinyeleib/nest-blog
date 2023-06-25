@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CreateUserDTO } from 'src/dto/user.dto';
@@ -46,7 +45,6 @@ export class UserService {
       security_answer
     };
 
-    // return newUser;
     return this.userRepository.save(newUser);
 
   }

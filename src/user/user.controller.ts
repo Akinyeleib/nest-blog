@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { BadRequestException, Body, Controller, Delete, Get, NotFoundException, Param, Post } from '@nestjs/common';
 import { CreateUserDTO } from 'src/dto/user.dto';
 import { UserService } from './user.service';

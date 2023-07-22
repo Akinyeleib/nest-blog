@@ -20,14 +20,17 @@ export class BlogController {
     private blogService: BlogService,
     private userService: UserService,
   ) {}
+  
   @Get()
   getBlogs(): Promise<Blog[]> {
     return this.blogService.getBlogs();
   }
+
   @Get('/:id')
   getBlog(@Param('id', ParseIntPipe) id: number): Promise<Blog> {
     return this.blogService.getBlog(id);
   }
+
   @Post()
   async addBlog(@Body() createBlogDTO: CreateBlogDTO): Promise<Blog> {
     // check if user exists
@@ -36,6 +39,7 @@ export class BlogController {
     if (!user) throw new ForbiddenException('Invalid Author');
     return this.blogService.createBlog(createBlogDTO, user);
   }
+
   @Delete('/:id')
   deleteBlog(@Param('id', ParseIntPipe) id: number) {
     return this.blogService.deleteBlog(id);

@@ -14,6 +14,6 @@ import { BlogCheckMiddleware } from 'src/middleware/blog.middleware';
 })
 export class BlogModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply(BlogCheckMiddleware).forRoutes('*');
+    consumer.apply(BlogCheckMiddleware).forRoutes('blogs/:id');
   }
 }

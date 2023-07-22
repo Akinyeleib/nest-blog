@@ -8,11 +8,5 @@ export class CreateCommentDTO {
   
   @IsStringNotEmpty()
   content: string
-  
-  @IsPositive()
-  user: number
-  
-  @IsPositive()
-  blog: number
 
 }

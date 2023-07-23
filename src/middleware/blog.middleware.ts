@@ -7,10 +7,8 @@ export class BlogCheckMiddleware implements NestMiddleware {
 
   constructor(@Inject(BlogService) private blogService: BlogService) {}
     
-78
     async use(req: Request, res: Response, next: NextFunction) {
         const blogID = parseInt(req.params.id)
-        console.log(`Blog is: ${blogID}, type is... ${typeof blogID}`)
         const blog = await this.blogService.getBlog(blogID)
         if (blog) {
             next();

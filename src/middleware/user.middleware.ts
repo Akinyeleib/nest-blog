@@ -10,7 +10,6 @@ export class UserCheckMiddleware implements NestMiddleware {
 78
     async use(req: Request, res: Response, next: NextFunction) {
         const userID = parseInt(req.params.id)
-        console.log(`User is: ${userID}, type is... ${typeof userID}`)
         const user = await this.userService.getUserByID(userID)
         if (user) {
             next();

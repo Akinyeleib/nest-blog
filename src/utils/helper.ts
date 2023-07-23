@@ -20,3 +20,7 @@ export async function generateToken(user: User): Promise<string> {
   }, process.env.JSON_TOKEN_KEY);
   return token;
 }
+
+export function retrieveTokenFromHeader() {
+  
+}
